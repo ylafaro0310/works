@@ -9,10 +9,10 @@ LAMPを使ったプレーンな開発練習用
 * よく使われる関数については300くらいは覚える
 
 ### やること
-#### 配列関数
+配列関数
 https://www.php.net/manual/ja/ref.array.php
 
-#### 配列のソート
+配列のソート
 https://www.php.net/manual/ja/ref.array.php
 
 ### コミットメッセージ
@@ -28,7 +28,7 @@ php:func (関数名) (コメント)
 * 要素の右寄せなど、配置を自在に設定できるようになる
  
 ### やること
-#### CSSリファレンス
+CSSリファレンス
 https://developer.mozilla.org/ja/docs/Web/CSS/Reference
 
 プロパティについてすべて目を通し、試す。

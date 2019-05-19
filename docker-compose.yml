@@ -18,3 +18,8 @@ services:
       - 3306:3306
     volumes:
       - ./db/mysql:/var/lib/mysql
+  node:
+    image: library/node
+    volumes:
+      - ./src:/src
+    working_dir: "/src"

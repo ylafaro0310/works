@@ -1,2 +1,2 @@
 # php-ls
-ls command made by php
+PHPでbashのlsコマンドを実装するプロジェクト。

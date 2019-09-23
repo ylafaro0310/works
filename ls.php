@@ -50,9 +50,9 @@ foreach($target_dirs as $key => $target_dir){
   }
 }
 
-function getFileInfo($filename){
-  $stat = stat($filename);
-  $perms = getPerms(fileperms($filename));
+function getFileInfo($path){
+  $stat = stat($path);
+  $perms = getPerms(fileperms($path));
   $owner = posix_getpwuid($stat['uid'])['name'];
   $group = posix_getgrgid($stat['gid'])['name'];
   $size = $stat['size'];
@@ -72,7 +72,7 @@ function getFileInfo($filename){
     // タイムスタンプ
     $timestamp,
     // ファイル名 
-    $filename
+    basename($path),
   ];
 }
 

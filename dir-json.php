@@ -11,7 +11,7 @@ function scanDirectory($pathname){
   foreach($dirs as $dir){
     $scanned_dir = scanDirectory($pathname . "/" . $dir);
     if(is_string($scanned_dir)){
-      $result[] = $scanned_dir;
+      $result[$scanned_dir] = null;
     }else{
       $result[$dir] = $scanned_dir;
     }

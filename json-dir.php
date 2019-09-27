@@ -8,7 +8,19 @@ $options = getopt("o:");
 if(array_key_exists("o",$options)){
     $output_path = rtrim($options["o"],"/");
 }else{
-    $output_path = ".";
+    $output_path = getcwd();
 }
 
-var_dump($output_path);
+jsonToDir($output_path,$json);
+
+function jsonToDir($output_path,$json){
+    foreach($json as $key => $value){
+        $pathname = $output_path . "/" . $key;
+        if($value){
+            mkdir($pathname,0777,true);
+            jsonToDir($pathname,$value);
+        }else{
+            touch($pathname);
+        }
+    }
+}

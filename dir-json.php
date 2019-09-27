@@ -20,4 +20,4 @@ function scanDirectory($pathname){
 }
 
 $json = json_encode(scanDirectory(realpath(".")),JSON_PRETTY_PRINT);
-print($json);
+file_put_contents("directories.json",$json);

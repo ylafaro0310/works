@@ -18,6 +18,7 @@ https://www.php.net/manual/ja/ref.array.php
 ### コミットメッセージ
 ```
 php:func (関数名) (コメント)
+php:dp (デザインパターン名) (コメント)
 ```
 
 

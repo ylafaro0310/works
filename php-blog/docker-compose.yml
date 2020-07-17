@@ -1,0 +1,15 @@
+version: '3'
+services: 
+    web:
+        build: docker/php
+        ports:
+            - "8000:80"
+    mysql:
+        image: "mysql:5.7"
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_DATABASE: php_blog
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_USER: default
+            MYSQL_PASSWORD: default

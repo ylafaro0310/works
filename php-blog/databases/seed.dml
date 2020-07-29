@@ -1,0 +1,3 @@
+INSERT INTO users (username,password) VALUES ('user01','password');
+INSERT INTO blogs (title,content,created_at,updated_at) VALUES ('花が咲きました','今年もネモフィラが満開です。','2020-07-30','2020-07-30');
+INSERT INTO blogs (title,content,created_at,updated_at) VALUES ('読書をしました','先生におすすめされた本を読んでみました。。','2020-07-28','2020-07-28');

@@ -4,6 +4,8 @@ services:
         build: docker/php
         ports:
             - "8000:80"
+        volumes:
+            - ./:/var/www/html
     mysql:
         image: "mysql:5.7"
         ports:

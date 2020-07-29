@@ -3,11 +3,25 @@
 </header>
 <body>
     <div class="container">
-        <div class="box">
-            <h2>タイトル</h2>
-            <article>
-                ここに記事の要約が表示されます。
-            </article>
-        </div>
+        <a href="/create">新規投稿</a>
+        <?php 
+            include('../models/Blog.php');
+            $blog = new Blog;
+            $posts = $blog->read();
+            foreach($posts as $post){ 
+        ?>
+        <form action="delete" method="post">
+            <input type="hidden" name="id" value="<?php echo($post['id'])?>"/>
+            <input type="hidden" name="title" value="<?php echo($post['title'])?>"/>
+            <input type="hidden" name="content" value="<?php echo($post['content'])?>"/>
+            <div class="box">
+                <h2><?php echo($post['title']) ?></h2>
+                <article>
+                    <?php echo($post['content']) ?>
+                </article>
+                <button type='submit'>投稿を削除する</button>
+            </div>
+        </form>
+        <?php } ?>
     </div>
 </body>

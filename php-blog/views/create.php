@@ -1,16 +1,19 @@
 <?php
+    include("../lib/login.php");
+    required_logined_session();
+
     if(!empty($_POST["title"]) && !empty($_POST["content"])){
         $value = [
             "title" => $_POST["title"],
             "content" => $_POST["content"],
+            "private" => isset($_POST["private"]) ? $_POST['private'] : "0",
         ];
         include("../models/Blog.php");
         $blog = new Blog;
         $blog->create($value);
 
-        $http = empty($_SERVER['HTTPS']) ? 'http://' : 'https://';
-        $url = $http . $_SERVER['HTTP_HOST'];
-        header('Location: '.$url,true,301);
+        header('Location: /',true,301);
+        exit;
     }
 ?>
 <header>
@@ -18,7 +21,7 @@
 </header>
 <body>
     <div class="container">
-        <form action="create" method="post">
+        <form action="" method="post">
             <div class="field">
                 <div class="control">
                     <label class="label">タイトル</label>
@@ -31,6 +34,7 @@
                     <textarea class="textarea" name="content"></textarea>
                 </div>
             </div>
+            <input type="checkbox" name="private" value="1"/>非公開にする
             <button type="submit">作成</button>
         </form>
     </div>

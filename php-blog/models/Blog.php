@@ -16,10 +16,11 @@ class Blog {
 
     function create($value){
         $date = date('Y-m-d H:i:s');
-        $sql = 'INSERT INTO blogs (title,content,created_at,updated_at) VALUE (:title,:content,\''. $date .'\',\''. $date .'\')';
+        $sql = "INSERT INTO blogs (title,content,private,created_at,updated_at) VALUE (:title,:content,:private,'". $date ."','". $date ."')";
         $sth = $this->dbh->prepare($sql);
         foreach($value as $key => $elem){
             $value[':'.$key] = $elem;
+            unset($value[$key]);
         }
         $sth->execute($value);
     }
@@ -27,7 +28,7 @@ class Blog {
     function read($id=null){
         if(empty($id)){
             // Get all
-            $sql = 'SELECT * FROM blogs ORDER BY updated_at ASC;';
+            $sql = 'SELECT * FROM blogs ORDER BY updated_at DESC;';
             $sth = $this->dbh->prepare($sql);
             $sth->execute();
             return $sth->fetchAll();

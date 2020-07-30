@@ -17,6 +17,7 @@
 </header>
 <body>
     <div class="container">
+        <h2 class="subtitle">ユーザー登録画面</h2>
         <form action="" method="post">
             <div class="field">
                 <div class="control">
@@ -36,7 +37,7 @@
                     <input class="input" type="password"/>
                 </div>
             </div>
-            <button type="submit">作成</button>
+            <button class="button" type="submit">作成</button>
         </form>
     </div>
 </body>

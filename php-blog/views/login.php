@@ -25,6 +25,7 @@
 </header>
 <body>
     <div class="container">
+        <h2 class="subtitle">ログイン画面</h2>
         <form action="" method="post">
             <div class="field">
                 <div class="control">
@@ -39,7 +40,7 @@
                 </div>
             </div>
             <input type="hidden" name="token" value="<?= h(generate_token())?>"/>
-            <button type="submit">ログイン</button>
+            <button class="button" type="submit">ログイン</button>
         </form>
     </div>
 </body>

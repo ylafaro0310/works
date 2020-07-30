@@ -8,18 +8,29 @@
 </header>
 <body>
     <div class="container">
+        <h2 class="subtitle">ブログ一覧画面</h2>
         <?php 
             if(isset($_SESSION['username'])){
         ?>
-        <a href="/create">新規投稿</a>
-        <form action="logout" method="post">
-            <input type="hidden" name="token" value="<?= h(generate_token())?>"/>
-            <button type="submit">ログアウト</button>
-        </form>
+        <nav class="level">
+            <div class="level-left">
+                <div class="level-item">
+                    <a class="button is-small" href="/create">新規投稿</a>
+                </div>
+            </div>
+            <div class="level-right">
+                <div class="level-item">
+                    <form action="logout" method="post">
+                        <input type="hidden" name="token" value="<?= h(generate_token())?>"/>
+                        <button class="button is-small" type="submit">ログアウト</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
         <?php
             }else{
         ?>
-            <a href="/login">ログイン</a>
+            <a class="button is-small" href="/login">ログイン</a>
         <?php                
             }
         ?>
@@ -42,7 +53,13 @@
                 <article>
                     <?php echo($post['content']) ?>
                 </article>
-                <button type='submit'>投稿を削除する</button>
+                <?php 
+                    if(isset($_SESSION['username'])){
+                ?>
+                <button class="button is-danger is-small" type='submit'>投稿を削除する</button>
+                <?php
+                    }
+                ?>
             </div>
         </form>
         <?php } ?>

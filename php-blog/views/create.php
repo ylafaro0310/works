@@ -21,6 +21,7 @@
 </header>
 <body>
     <div class="container">
+        <h2 class="subtitle">新規投稿画面</h2>
         <form action="" method="post">
             <div class="field">
                 <div class="control">
@@ -34,8 +35,13 @@
                     <textarea class="textarea" name="content"></textarea>
                 </div>
             </div>
-            <input type="checkbox" name="private" value="1"/>非公開にする
-            <button type="submit">作成</button>
+            <div>
+                <label class="checkbox">
+                    <input type="checkbox" name="private" value="1"/>
+                    非公開にする
+                </label>
+            </div>
+            <button class="button" type="submit">投稿する</button>
         </form>
     </div>
 </body>

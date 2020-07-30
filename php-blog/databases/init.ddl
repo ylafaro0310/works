@@ -8,6 +8,7 @@ CREATE TABLE blogs (
     id int AUTO_INCREMENT,
     title varchar(255),
     content varchar(255),
+    private boolean NOT NULL DEFAULT '0',
     created_at datetime,
     updated_at datetime,
     index(id)

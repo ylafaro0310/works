@@ -6,5 +6,6 @@ module.exports = function(app){
     .post(todos.create_todo);
 
   app.route('/api/todos/:todoId')
+    .put(todos.update_todo)
     .delete(todos.delete_todo);
 };

@@ -25,6 +25,16 @@ exports.create_todo = (req,res) => {
   });
 };
 
+exports.update_todo = (req,res) => {
+  var todoId = req.params.todoId;
+  var is_completed = req.body.is_completed;
+  pool.query('UPDATE todos SET is_completed = ? WHERE id = ?',[is_completed,todoId],(err,rows,fields)=>{
+    if(err) res.send(err);
+    
+    res.send('Updated');
+  });
+};
+
 exports.delete_todo = (req,res) => {
   var todoId = req.params.todoId;
   pool.query('DELETE FROM todos WHERE id = ?',[todoId],(err,rows,fields)=>{

@@ -1,5 +1,12 @@
 FROM python:3.9.4
 
-RUN pip3 install flask SQLAlchemy Flask-SQLAlchemy PyMySQL Flask-Migrate
+RUN pip3 install \
+    flask \
+    SQLAlchemy \
+    Flask-SQLAlchemy \
+    PyMySQL \
+    Flask-Migrate \
+    flask-marshmallow \
+    marshmallow-sqlalchemy
 
 WORKDIR /works

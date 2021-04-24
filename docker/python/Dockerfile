@@ -7,6 +7,8 @@ RUN pip3 install \
     PyMySQL \
     Flask-Migrate \
     flask-marshmallow \
-    marshmallow-sqlalchemy
+    marshmallow-sqlalchemy \
+    pytest \
+    python-dotenv
 
 WORKDIR /works

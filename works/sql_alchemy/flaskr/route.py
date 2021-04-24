@@ -1,6 +1,7 @@
 from flask import Flask, Blueprint, make_response, jsonify, request, current_app
 from flaskr.database import db
 from flaskr.models import *
+from flaskr.validate import validate
 
 api = Blueprint('api', __name__)
 
@@ -14,10 +15,11 @@ def index():
 
 @api.route('/users', methods=['POST'])
 def create():
-    if not request.is_json:
+    valid, message = validate(request)
+    if valid == False:
         return make_response(jsonify({
             'code': 400,
-            'message': 'Request data should be json.'
+            'message': message
         }))
     name = request.json['name']
     user = User(name=name)

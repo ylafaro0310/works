@@ -3,6 +3,7 @@ from flaskr.database import db, ma
 
 class User(db.Model):
     __tablename__ = 'users'
+    columns = ['name']
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)

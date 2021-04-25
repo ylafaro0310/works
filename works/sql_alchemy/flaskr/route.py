@@ -2,6 +2,8 @@ from flask import Flask, Blueprint, make_response, jsonify, request, current_app
 from flaskr.database import db
 from flaskr.models import *
 from flaskr.validate import validate
+from flask_jwt import jwt_required
+from werkzeug.security import generate_password_hash, check_password_hash
 
 api = Blueprint('api', __name__)
 
@@ -22,7 +24,8 @@ def create():
             'message': message
         }))
     name = request.json['name']
-    user = User(name=name)
+    password = generate_password_hash(request.json['password'])
+    user = User(name=name,password=password)
     db.session.add(user)
     db.session.commit()
     return make_response(jsonify({
@@ -30,6 +33,7 @@ def create():
     }))
 
 @api.route('/users/<int:user_id>', methods=['GET'])
+@jwt_required()
 def show(user_id):
     user_schema = UserSchema()
     user = User.query.filter_by(id=user_id).first()

@@ -9,6 +9,7 @@ RUN pip3 install \
     flask-marshmallow \
     marshmallow-sqlalchemy \
     pytest \
-    python-dotenv
+    python-dotenv \
+    flask-jwt
 
 WORKDIR /works

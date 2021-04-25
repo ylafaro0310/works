@@ -30,6 +30,7 @@ def test_create(client):
 
     rv = client.post('/users', json={
         'name': 'pytest'
+        'password': 'test'
     })
     assert b'200' in rv.data
 

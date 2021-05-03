@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 import numpy as np
 
-def plot_decision_regions(X, y, classifier, test_idx, resolution=0.02):
+def plot_decision_regions(X, y, classifier, test_idx=None, resolution=0.02):
     markers = ('s', 'x', 'o', '^', 'v')
     colors = ('red', 'blue', 'lightgreen', 'gray', 'cyan')
     cmap = ListedColormap(colors[:len(np.unique(y))])

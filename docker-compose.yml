@@ -1,0 +1,25 @@
+version: '2'
+services:
+  php:
+    build: ./docker/php
+    environment:
+      - APACHE_RUN_USER=#1000
+      - APACHE_RUN_GROUP=#1000
+    volumes: 
+      - ./src:/var/www/html
+    ports:
+      - 8080:80
+    mem_limit: 1G
+  mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db/mysql:/var/lib/mysql
+  node:
+    image: library/node
+    volumes:
+      - ./:/work
+    working_dir: "/work"

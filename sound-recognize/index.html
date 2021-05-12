@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang='ja'>
+    <head>
+        <meta charset="UTF-8">
+        <title>WEB会議システム</title>
+        <link rel="stylesheet" type="text/css" href="./style.css">
+    </head>
+    <body>
+        <h2>音声認識&チャット</h2>
+        <div class="container">
+            <div>
+                <h3>音声認識</h3>
+                <hr/>
+                <button class="btn" id="btn_start">始める</button>
+                <div id="content"></div>
+            </div>
+        
+            <div>
+                <h3>チャット</h3>
+                <hr/>
+                <div class="text-field">
+                    <label>ユーザ名</label>
+                    <input type="text" id="username">
+                </div>
+                <div>
+                    <textarea id="text" rows="5"></textarea>
+                    <button class="btn" id="send">送信</button>
+                </div>
+                <div id="output"></div>
+            </div>
+        </div>
+        
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
+      
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#config-web-app -->
+
+        <script src="./voice.js"></script>
+        <script src="./chat.js"></script>
+    </body>
+</html>

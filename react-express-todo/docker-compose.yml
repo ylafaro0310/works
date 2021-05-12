@@ -1,0 +1,28 @@
+version: "3"
+services: 
+    node:
+        image: "node:14"
+        user: "node"
+        working_dir: "/home/node/app"
+        tty: true
+        environment: 
+            - NODE_ENV=development
+        volumes:
+            - ./:/home/node/app
+        ports:
+            - "3000:3000"
+        depends_on: 
+            - mysql
+    mysql:
+        image: "mysql:5.7"
+        environment: 
+            - MYSQL_DATABASE=react_express_todo
+            - MYSQL_USER=default
+            - MYSQL_PASSWORD=default
+            - MYSQL_ROOT_PASSWORD=default
+        ports:
+            - "3036:3036"
+        volumes: 
+            - mysql-data:/var/lib/mysql
+volumes: 
+    mysql-data:

@@ -1,0 +1,10 @@
+{
+    "dev": {
+        "driver": "mysql",
+        "user": "default",
+        "password": "default",
+        "host": "mysql",
+        "port": "3306",
+        "database": "react_express_todo"
+    }
+}

@@ -1,3 +1,4 @@
+import { configureStore, createSlice } from '@reduxjs/toolkit';
 import React, { Reducer, useState } from 'react';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { AnyAction, createStore } from 'redux';
@@ -8,21 +9,40 @@ interface CounterState {
 }
 const initialState: CounterState = { num: 0 };
 
-const reducer = (state=initialState, action: AnyAction) => {
-  switch(action.type){
-    case "decrement":
-      return {...state, num: state.num - 1 };
-    case "increment":
-      return {...state, num: state.num + 1 };
-    default:
-      return state;
-  }
-}
+// const reducer = (state=initialState, action: AnyAction) => {
+//   switch(action.type){
+//     case "decrement":
+//       return {...state, num: state.num - 1 };
+//     case "increment":
+//       return {...state, num: state.num + 1 };
+//     default:
+//       return state;
+//   }
+// }
 
-const store = createStore(reducer);
+const slice = createSlice({
+  name: 'counter',
+  initialState,
+  reducers: {
+    decrement: (state, action: AnyAction) =>({
+      ...state,
+      num: state.num - 1,
+    }),
+    increment: (state, action: AnyAction) =>({
+      ...state,
+      num: state.num + 1,
+    })
+  }
+})
+
+const store = configureStore({
+  reducer: {
+    counter: slice.reducer,
+  }
+});
 
 type RootState = ReturnType<typeof store.getState>
-type AppDispatch = typeof store.dispatch
+//type AppDispatch = typeof store.dispatch
 
 const App = ()=>{
   return (
@@ -36,14 +56,13 @@ const App = ()=>{
 }
 
 const Click = ()=>{
-  const num = useSelector((state: RootState)=>state.num);
-  const dispatch = useDispatch<AppDispatch>();
+  const num = useSelector((state: RootState)=>state.counter.num);
   return (
     <div>
       <h3>Using useSelector, useDispatch</h3>
       Number: {num}
-      <button onClick={()=>dispatch({type: "increment"})}>+</button>
-      <button onClick={()=>dispatch({type: "decrement"})}>-</button>
+      <button onClick={slice.actions.increment}>+</button>
+      <button onClick={slice.actions.decrement}>-</button>
     </div>
   )
 }

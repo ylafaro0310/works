@@ -1,0 +1,24 @@
+<html>
+
+<body>
+    <script type="text/javascript">
+        function getFunc() {
+            fetch('http://localhost:8000/server.php')
+                .then(res => res.text())
+                .then(val => {
+                    console.log(val);
+                    var newElement = document.createElement("li");
+                    var eventList = document.getElementById('list');
+
+                    newElement.innerHTML = "message: " + val;
+                    eventList.appendChild(newElement);
+                    getFunc();
+                });
+        }
+        getFunc();
+    </script>
+    <div id="list">
+    </div>
+</body>
+
+</html>
